@@ -1,15 +1,20 @@
 class Solution:
     def judgeSquareSum(self, c: int) -> bool:
-        squareroot = set()
+        left =0
+        right = int(sqrt(c))
 
-        for i in range(int(sqrt(c)) + 1):
-            squareroot.add(i * i)
+        while left <= right:
+            total = left * left + right * right
+
+            if total < c:
+                left += 1
         
-        a = 0
+            elif total > c:
+                right -= 1
 
-        while a * a <= c:
-            target = c - a * a
-            if target in squareroot:
+            else:
                 return True
-            a += 1 
+        
         return False
+        
+        
