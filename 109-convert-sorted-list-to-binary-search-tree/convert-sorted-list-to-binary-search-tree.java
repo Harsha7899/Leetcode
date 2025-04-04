@@ -25,24 +25,22 @@
  */
 class Solution {
     public TreeNode sortedListToBST(ListNode head) {
-        if(head == null) return null;
-        if(head.next == null) return new TreeNode(head.val);
-
-        ListNode slow = head;
-        ListNode fast = head;
-        ListNode mid = slow;
-
-        while(fast != null && fast.next !=null)
-        {
-            mid = slow;
-            fast = fast.next.next;
-            slow = slow.next;
+        List<Integer> nums = new ArrayList<>();
+        while (head != null) {
+            nums.add(head.val);
+            head = head.next;
         }
 
-        TreeNode node = new TreeNode(slow.val);
-        mid.next = null;
-        node.left = sortedListToBST(head);
-        node.right = sortedListToBST(slow.next);
+       return buildTree(nums, 0, nums.size() - 1);
+    }
+     private TreeNode buildTree(List<Integer> nums, int left, int right) {
+        if (left > right) return null;
+
+        int mid = (left + right) / 2;
+        TreeNode node = new TreeNode(nums.get(mid));
+        node.left = buildTree(nums, left, mid - 1);
+        node.right = buildTree(nums, mid + 1, right);
         return node;
     }
 }
+
