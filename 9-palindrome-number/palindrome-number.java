@@ -3,7 +3,7 @@ class Solution {
      
         if(x < 0)  return false;
 
-        int original_number = x, sum =0,rev;
+        int original_number = x, sum =0;
         while(x != 0)
         {
            sum = (sum * 10) + x % 10;
