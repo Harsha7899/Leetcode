@@ -13,17 +13,14 @@ class Solution {
         
         fixed_String = fixed_String.toLowerCase();
 
-        int left =0;
-        int right =  fixed_String.length()-1;
+        int left =0, right =  fixed_String.length()-1;
         
         while( left <= right)
         {
-            if( fixed_String.charAt(left) != fixed_String.charAt(right))
+            if( fixed_String.charAt(left++) != fixed_String.charAt(right--))
               {
                      return false;
             }
-            left++;
-            right--;
         }
         return true;
     }
