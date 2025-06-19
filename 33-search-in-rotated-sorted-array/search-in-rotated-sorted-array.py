@@ -10,7 +10,6 @@ class Solution:
             if nums[l] <= nums[mid]:
                 if target > nums[mid] or target < nums[l]:
                     l = mid + 1
-
                 else:
                     r = mid - 1
 
